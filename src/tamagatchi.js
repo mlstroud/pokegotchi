@@ -26,6 +26,8 @@ export class Tamagatchi {
       //   this.health += 1;
       // }
 
+      // if (this.didYouDie())
+
       if (this.tiredness <= 3) {
         this.health = this.health - (1 * this.healthMult);
       }
@@ -50,11 +52,21 @@ export class Tamagatchi {
       if (this.fullness <= 3) {
         this.health = this.health - (2 * this.healthMult);
       } else if (this.fullness >= 8 && !this.sick) {
-        this.health += 1;
+        if (this.health < 10) {
+          this.health += 1;
+        }
       }
 
 
     }, 30000);
+  }
+
+  didYouDie() {
+    if (this.health <= 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   poopFunction() {
@@ -80,15 +92,29 @@ export class Tamagatchi {
   }
 
   feed() {
-    this.fullness = 10;
+    if (this.sick === true) {
+      this.fullness += 2;
+    } else {
+      this.fullness = 10;
+    }
+
   }
 
   play() {
-    this.happiness = 10;
+    if (this.sick === true) {
+      this.happiness += 2;
+    } else {
+      this.happiness = 10;
+    }
+
   }
 
   tuckIn() {
-    this.tiredness = 10;
+    if (this.sick === true) {
+      this.tiredness += 2;
+    } else {
+      this.tiredness = 10;
+    }
   }
 
   medicine() {

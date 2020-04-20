@@ -184,6 +184,29 @@ describe('Tamagatchi', () => {
     expect(thisTamagatchi.health).toEqual(1);
   });
 
+  test('tests if the feed function is impaired by sickness', () => {
+    thisTamagatchi.sick = true;
+    thisTamagatchi.fullness = 5;
+    thisTamagatchi.feed();
+    thisTamagatchi.fullness = 7;
+  });
+
+  test('tests if the play function is impaired by sickness', () => {
+    thisTamagatchi.sick = true;
+    thisTamagatchi.happiness = 5;
+    thisTamagatchi.play();
+    thisTamagatchi.happiness = 7;
+  });
+
+  test('tests if the sleep function is impaired by sickness', () => {
+    thisTamagatchi.sick = true;
+    thisTamagatchi.tiredness = 5;
+    thisTamagatchi.tuckIn();
+    thisTamagatchi.tiredness = 7;
+  });
+
+
+
   // evolve after x amount of time.
 
 
