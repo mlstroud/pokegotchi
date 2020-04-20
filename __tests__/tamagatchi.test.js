@@ -20,6 +20,7 @@ describe('Tamagatchi', () => {
     expect(thisTamagatchi.fullness).toEqual(10);
     expect(thisTamagatchi.happiness).toEqual(10);
     expect(thisTamagatchi.tiredness).toEqual(10);
+    expect(thisTamagatchi.sick).toEqual(false);
 
   });
 
@@ -70,20 +71,41 @@ describe('Tamagatchi', () => {
     expect(thisTamagatchi.health).toEqual(8);
   });
 
-  test('should decrease health by 2 if fullness reaches 3', () => {
+  test('should decrease health by 1 if happiness reaches 3', () => {
     thisTamagatchi.happiness = 3;
     jest.advanceTimersByTime(30001);
     expect(thisTamagatchi.health).toEqual(9);
   });
 
-  test('should decrease health by 2 if fullness reaches 3', () => {
+  test('should decrease health by 1 if tiredness reaches 3', () => {
     thisTamagatchi.tiredness = 3;
     jest.advanceTimersByTime(30001);
     expect(thisTamagatchi.health).toEqual(9);
 
   });
 
-  // if health <= 4 or 5, the tamagatchi gets sick and health decreases more rapidly 
+  test('should change the sick element of Tamagatchi to be true when health reaches 4 or less', () => {
+    thisTamagatchi.health = 4;
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.sick).toEqual(true);
+  });
+
+  test('medicine should change the sick element of Tamagatchi to be false and increase health to 5', () => {
+    thisTamagatchi.health = 4;
+    jest.advanceTimersByTime(30001);
+    thisTamagatchi.medicine();
+    expect(thisTamagatchi.sick).toEqual(false);
+    expect(thisTamagatchi.health).toEqual(5);
+
+  });
+
+  test('test if medicine is allowed for 10 seconds when the tamagatchi becomes sick', () => {
+    thisTamagatchi.health = 4;
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.medsAllowed).toEqual(true);
+    jest.advanceTimersByTime(10001);
+    expect(thisTamagatchi.medsAllowed).toEqual(false);
+  })
   // have a true or false property of tamagatchi that adds a multiplier to the health decreasers
 
   // have a poop function that makes them sick
