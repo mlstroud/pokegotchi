@@ -11,6 +11,14 @@ export class Tamagatchi {
   setLife() {
     setInterval(() => {
       this.tiredness--;
+      this.happiness -= .5;
+      this.fullness -= 2;
+      this.age += 0.5;
     }, 30000);
   }
+
+  // decrease fullness by 
+  //
+
+
 }

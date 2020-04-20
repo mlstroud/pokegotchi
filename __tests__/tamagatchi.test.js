@@ -23,12 +23,32 @@ describe('Tamagatchi', () => {
 
   });
 
-
   test('should have a tiredness of 9 after 30001 milliseconds ', () => {
     jest.advanceTimersByTime(30001);
     expect(thisTamagatchi.tiredness).toEqual(9);
 
   });
+
+  test('should have a happiness of 9 after 60001 milliseconds ', () => {
+    jest.advanceTimersByTime(60001);
+    expect(thisTamagatchi.happiness).toEqual(9);
+
+  });
+
+  test('should have a fullness of 8 after 30001 milliseconds ', () => {
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.fullness).toEqual(8);
+
+  });
+
+  test('should have an age of 1 after 60001 milliseconds', () => {
+    jest.advanceTimersByTime(60001);
+    expect(thisTamagatchi.age).toEqual(1);
+  });
+
+
+
+
 
 
 
