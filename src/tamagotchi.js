@@ -1,4 +1,4 @@
-export class Tamagatchi {
+export class Tamagotchi {
   constructor(name) {
     this.name = name;
     this.age = 0;
