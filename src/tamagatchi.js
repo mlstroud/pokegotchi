@@ -10,6 +10,7 @@ export class Tamagatchi {
     this.medsAllowed = false;
     this.medsOffered = false;
     this.poop = false;
+    this.healthMult = 1;
   }
 
   setLife() {
@@ -26,15 +27,16 @@ export class Tamagatchi {
       // }
 
       if (this.tiredness <= 3) {
-        this.health--;
+        this.health = this.health - (1 * this.healthMult);
       }
 
       if (this.happiness <= 3) {
-        this.health--;
+        this.health = this.health - (1 * this.healthMult);
       }
 
       if (this.health <= 4) {
         this.sick = true;
+        this.healthMult = 1.5;
       }
 
       if (this.sick === true && this.medsOffered === false) {
@@ -46,8 +48,8 @@ export class Tamagatchi {
       }
 
       if (this.fullness <= 3) {
-        this.health -= 2;
-      } else if (this.fullness >= 8 || !this.sick) {
+        this.health = this.health - (2 * this.healthMult);
+      } else if (this.fullness >= 8 && !this.sick) {
         this.health += 1;
       }
 
@@ -60,6 +62,7 @@ export class Tamagatchi {
     setTimeout(() => {
       if (this.poop === true) {
         this.sick = true;
+        this.healthMult = 1.5;
       }
     }, 30000);
   }
@@ -91,5 +94,6 @@ export class Tamagatchi {
   medicine() {
     this.health = 5;
     this.sick = false;
+    this.healthMult = 1;
   }
 }

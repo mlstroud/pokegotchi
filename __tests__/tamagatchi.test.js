@@ -71,14 +71,16 @@ describe('Tamagatchi', () => {
     expect(thisTamagatchi.health).toEqual(8);
   });
 
-  test('should decrease health by 1 if happiness reaches 3', () => {
+  test('should decrease health by 1 if happiness reaches 3 without boost from fullness health boost', () => {
     thisTamagatchi.happiness = 3;
+    thisTamagatchi.fullness = 7;
     jest.advanceTimersByTime(30001);
     expect(thisTamagatchi.health).toEqual(9);
   });
 
-  test('should decrease health by 1 if tiredness reaches 3', () => {
+  test('should decrease health by 1 if tiredness reaches 3 without boost from fullness health boost', () => {
     thisTamagatchi.tiredness = 3;
+    thisTamagatchi.fullness = 7;
     jest.advanceTimersByTime(30001);
     expect(thisTamagatchi.health).toEqual(9);
 
@@ -133,29 +135,54 @@ describe('Tamagatchi', () => {
     expect(thisTamagatchi.health).toEqual(8);
   });
 
-  test('observe the tamagatchi through several intervals', () => {
-    console.log(thisTamagatchi);
-    jest.advanceTimersByTime(30001);
-    console.log(thisTamagatchi);
-    jest.advanceTimersByTime(30001);
-    console.log(thisTamagatchi);
-    jest.advanceTimersByTime(30001);
-    console.log(thisTamagatchi);
-    jest.advanceTimersByTime(7000);
-    console.log(thisTamagatchi);
-    jest.advanceTimersByTime(23001)
-    console.log(thisTamagatchi);
-    jest.advanceTimersByTime(30001);
-    console.log(thisTamagatchi);
-    jest.advanceTimersByTime(30001);
-    console.log(thisTamagatchi);
-    jest.advanceTimersByTime(30001);
-    console.log(thisTamagatchi);
-    jest.advanceTimersByTime(30001);
+  // test('observe the tamagatchi through several intervals', () => {
+  //   console.log(thisTamagatchi);
+  //   jest.advanceTimersByTime(30001);
+  //   console.log(thisTamagatchi);
+  //   jest.advanceTimersByTime(30001);
+  //   console.log(thisTamagatchi);
+  //   jest.advanceTimersByTime(30001);
+  //   console.log(thisTamagatchi);
+  //   jest.advanceTimersByTime(7000);
+  //   console.log(thisTamagatchi);
+  //   jest.advanceTimersByTime(23001)
+  //   console.log(thisTamagatchi);
+  //   jest.advanceTimersByTime(30001);
+  //   console.log(thisTamagatchi);
+  //   jest.advanceTimersByTime(30001);
+  //   console.log(thisTamagatchi);
+  //   jest.advanceTimersByTime(30001);
+  //   console.log(thisTamagatchi);
+  //   jest.advanceTimersByTime(30001);
 
-    expect(thisTamagatchi.age).toEqual(2.5);
+  //   expect(thisTamagatchi.age).toEqual(4);
+  // });
+
+  // test('tests if when the tamagatchi is sick, it loses health at a faster rate', () => {
+  //   thisTamagatchi.sick = true;
+  //   thisTamagatchi.happiness = 8;
+  //   thisTamagatchi.fullness = 3;
+  //   thisTamagatchi.health = 5;
+  //   thisTamagatchi.healthMult = 1.5;
+  //   jest.advanceTimersByTime(30001);
+  //   expect(thisTamagatchi.health).toEqual(2);
+  // });
+
+  test('tests if healthMult is changed when the tamagatchi gets sick', () => {
+    expect(thisTamagatchi.healthMult).toEqual(1);
+    thisTamagatchi.health = 4;
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.healthMult).toEqual(1.5);
   });
-  // have a true or false property of tamagatchi that adds a multiplier to the health decreasers
+
+  test('tests if when the tamagatchi is sick, it loses health at a faster rate', () => {
+    expect(thisTamagatchi.healthMult).toEqual(1);
+    thisTamagatchi.health = 4;
+    thisTamagatchi.fullness = 3;
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.healthMult).toEqual(1.5);
+    expect(thisTamagatchi.health).toEqual(1);
+  });
 
   // evolve after x amount of time.
 
