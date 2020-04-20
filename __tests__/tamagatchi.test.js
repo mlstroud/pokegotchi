@@ -105,14 +105,60 @@ describe('Tamagatchi', () => {
     expect(thisTamagatchi.medsAllowed).toEqual(true);
     jest.advanceTimersByTime(10001);
     expect(thisTamagatchi.medsAllowed).toEqual(false);
-  })
+  });
+
+  test('test if the tamagatchi poops every 1.5 minutes', () => {
+    jest.advanceTimersByTime(90001);
+    expect(thisTamagatchi.poop).toEqual(true);
+  });
+
+  test('test if the tamagatchi gets sick if poop isnt cleaned within 30 seconds', () => {
+    jest.advanceTimersByTime(90001);
+    expect(thisTamagatchi.poop).toEqual(true);
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.sick).toEqual(true);
+  });
+
+  test('test if cleaning the poop changes the poop element and prevents sickness', () => {
+    jest.advanceTimersByTime(90001);
+    expect(thisTamagatchi.poop).toEqual(true);
+    thisTamagatchi.cleanPoop();
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.sick).toEqual(false);
+  });
+
+  test('test if tamagatchi is healed when fullness is >= 8', () => {
+    thisTamagatchi.health = 7;
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.health).toEqual(8);
+  });
+
+  test('observe the tamagatchi through several intervals', () => {
+    console.log(thisTamagatchi);
+    jest.advanceTimersByTime(30001);
+    console.log(thisTamagatchi);
+    jest.advanceTimersByTime(30001);
+    console.log(thisTamagatchi);
+    jest.advanceTimersByTime(30001);
+    console.log(thisTamagatchi);
+    jest.advanceTimersByTime(7000);
+    console.log(thisTamagatchi);
+    jest.advanceTimersByTime(23001)
+    console.log(thisTamagatchi);
+    jest.advanceTimersByTime(30001);
+    console.log(thisTamagatchi);
+    jest.advanceTimersByTime(30001);
+    console.log(thisTamagatchi);
+    jest.advanceTimersByTime(30001);
+    console.log(thisTamagatchi);
+    jest.advanceTimersByTime(30001);
+
+    expect(thisTamagatchi.age).toEqual(2.5);
+  });
   // have a true or false property of tamagatchi that adds a multiplier to the health decreasers
 
-  // have a poop function that makes them sick
-
-  // have a medicine function that they must use within x iterations of time
-
   // evolve after x amount of time.
+
 
 
 });
