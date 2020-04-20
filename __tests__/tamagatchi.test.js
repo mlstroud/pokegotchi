@@ -46,10 +46,22 @@ describe('Tamagatchi', () => {
     expect(thisTamagatchi.age).toEqual(1);
   });
 
+  test('should increase fullness to max (10)', () => {
+    jest.advanceTimersByTime(90001);
+    thisTamagatchi.feed();
+    expect(thisTamagatchi.fullness).toEqual(10);
+  });
 
+  test('should increase happiness to max(10)', () => {
+    jest.advanceTimersByTime(90001);
+    thisTamagatchi.play();
+    expect(thisTamagatchi.happiness).toEqual(10);
+  });
 
-
-
-
+  test('should increase tiredness to max(10)', () => {
+    jest.advanceTimersByTime(90001);
+    thisTamagatchi.tuckIn();
+    expect(thisTamagatchi.tiredness).toEqual(10);
+  });
 
 });

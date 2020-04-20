@@ -17,8 +17,16 @@ export class Tamagatchi {
     }, 30000);
   }
 
-  // decrease fullness by 
-  //
+  feed() {
+    this.fullness = 10;
+  }
 
+  play() {
+    this.happiness = 10;
+  }
+
+  tuckIn() {
+    this.tiredness = 10;
+  }
 
 }
