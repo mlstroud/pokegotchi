@@ -14,6 +14,18 @@ export class Tamagatchi {
       this.happiness -= .5;
       this.fullness -= 2;
       this.age += 0.5;
+
+      if (this.fullness <= 3) {
+        this.health -= 2;
+      }
+
+      if (this.tiredness <= 3) {
+        this.health--;
+      }
+
+      if (this.happiness <= 3) {
+        this.health--;
+      }
     }, 30000);
   }
 

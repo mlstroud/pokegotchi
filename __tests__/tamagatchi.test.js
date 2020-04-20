@@ -64,4 +64,33 @@ describe('Tamagatchi', () => {
     expect(thisTamagatchi.tiredness).toEqual(10);
   });
 
+  test('should decrease health by 2 if fullness reaches 3', () => {
+    thisTamagatchi.fullness = 3;
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.health).toEqual(8);
+  });
+
+  test('should decrease health by 2 if fullness reaches 3', () => {
+    thisTamagatchi.happiness = 3;
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.health).toEqual(9);
+  });
+
+  test('should decrease health by 2 if fullness reaches 3', () => {
+    thisTamagatchi.tiredness = 3;
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagatchi.health).toEqual(9);
+
+  });
+
+  // if health <= 4 or 5, the tamagatchi gets sick and health decreases more rapidly 
+  // have a true or false property of tamagatchi that adds a multiplier to the health decreasers
+
+  // have a poop function that makes them sick
+
+  // have a medicine function that they must use within x iterations of time
+
+  // evolve after x amount of time.
+
+
 });
