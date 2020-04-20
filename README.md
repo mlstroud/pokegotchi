@@ -22,11 +22,6 @@ _This web application uses classes, looping, arrays, asynchrony, and an API to c
     * Output: "Hi, this is your tamagatchi, Jimmy. He needs to be fed, played with, and put to bed!"
 
 
-* - Displays an "egg" to the user
-    * Input: "some time passes"
-    * Output: "Your egg is hatching!" - the tamagatchi is displayed
-
-
 * - Decrease tamagatchi food, sleep, and happiness over time
     * Input: "1 minutes passes"
     * Output: "Jimmy is hungry, sleepy, and lonely"
@@ -78,6 +73,10 @@ _This web application uses classes, looping, arrays, asynchrony, and an API to c
     * Input: 
     * output: "tamagatchi health goes from 8/10 to 9/10 in 30 seconds"
 
+* - Displays an "egg" to the user
+    * Input: "some time passes"
+    * Output: "Your egg is hatching!" - the tamagatchi is displayed
+
           
 
 ## Known Bugs
@@ -87,4 +86,4 @@ _This web application uses classes, looping, arrays, asynchrony, and an API to c
 
 Copyright © 2020
 
-**_DJ Zevenbergen_**
+**_DJ Zevenbergen & Matt Stroud_**
