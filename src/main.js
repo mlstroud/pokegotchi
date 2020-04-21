@@ -11,16 +11,28 @@ $(document).ready(function () {
   $("#medicine-button").prop("disabled", true);
 
   $("#blue-button").click(function () {
+    let name = $("#pet-name").val();
+    if (name === "") {
+      name = "Jeff";
+    }
     tamagotchi = new Tamagotchi(name, "blue");
     createTamagotchi(tamagotchi);
   });
 
   $("#green-button").click(function () {
+    let name = $("#pet-name").val();
+    if (name === "") {
+      name = "Jeff";
+    }
     tamagotchi = new Tamagotchi(name, "green");
     createTamagotchi(tamagotchi);
   });
 
   $("#red-button").click(function () {
+    let name = $("#pet-name").val();
+    if (name === "") {
+      name = "Jeff";
+    }
     tamagotchi = new Tamagotchi(name, "red");
     createTamagotchi(tamagotchi);
   });

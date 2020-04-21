@@ -18,10 +18,6 @@ export function showEgg(color) {
 export function createTamagotchi(tamagotchi) {
   $("#game-select").slideUp();
   $("#game-start").slideDown();
-  let name = $("#pet-name").val();
-  if (name === "") {
-    name = "Jeff";
-  }
   showEgg(tamagotchi.color);
   tamagotchi.setLife();
   $("#name").text(tamagotchi.name);
