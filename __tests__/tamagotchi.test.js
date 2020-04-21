@@ -135,39 +135,6 @@ describe('Tamagatchi', () => {
     expect(thisTamagotchi.health).toEqual(8);
   });
 
-  // test('observe the tamagatchi through several intervals', () => {
-  //   console.log(thisTamagotchi);
-  //   jest.advanceTimersByTime(30001);
-  //   console.log(thisTamagotchi);
-  //   jest.advanceTimersByTime(30001);
-  //   console.log(thisTamagotchi);
-  //   jest.advanceTimersByTime(30001);
-  //   console.log(thisTamagotchi);
-  //   jest.advanceTimersByTime(7000);
-  //   console.log(thisTamagotchi);
-  //   jest.advanceTimersByTime(23001)
-  //   console.log(thisTamagotchi);
-  //   jest.advanceTimersByTime(30001);
-  //   console.log(thisTamagotchi);
-  //   jest.advanceTimersByTime(30001);
-  //   console.log(thisTamagotchi);
-  //   jest.advanceTimersByTime(30001);
-  //   console.log(thisTamagotchi);
-  //   jest.advanceTimersByTime(30001);
-
-  //   expect(thisTamagotchi.age).toEqual(4);
-  // });
-
-  // test('tests if when the tamagatchi is sick, it loses health at a faster rate', () => {
-  //   thisTamagotchi.sick = true;
-  //   thisTamagotchi.happiness = 8;
-  //   thisTamagotchi.fullness = 3;
-  //   thisTamagotchi.health = 5;
-  //   thisTamagotchi.healthMult = 1.5;
-  //   jest.advanceTimersByTime(30001);
-  //   expect(thisTamagotchi.health).toEqual(2);
-  // });
-
   test('tests if healthMult is changed when the tamagatchi gets sick', () => {
     expect(thisTamagotchi.healthMult).toEqual(1);
     thisTamagotchi.health = 4;

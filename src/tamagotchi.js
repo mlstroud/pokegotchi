@@ -1,8 +1,9 @@
 import { update } from './../src/userinterface.js';
 
 export class Tamagotchi {
-  constructor(name) {
+  constructor(name, color) {
     this.name = name;
+    this.color = color;
     this.age = 0;
     this.health = 10;
     this.fullness = 10;

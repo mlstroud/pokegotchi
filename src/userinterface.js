@@ -10,7 +10,24 @@ function loadImages(r) {
 
 const images = loadImages(require.context('./../assets/images', false, /\.(png|jpe?g|svg)$/));
 
-$(".tama-image").html(`<img src=${images["egg.png"]}>`);
+export function showEgg(color) {
+  let image = images[`${color}egg.png`];
+  $(".tama-image").html(`<img src=${image}>`);
+}
+
+export function createTamagotchi(tamagotchi) {
+  $("#game-select").slideUp();
+  $("#game-start").slideDown();
+  let name = $("#pet-name").val();
+  if (name === "") {
+    name = "Jeff";
+  }
+  showEgg(tamagotchi.color);
+  tamagotchi.setLife();
+  $("#name").text(tamagotchi.name);
+  $("#age").text(tamagotchi.age);
+  $("#sick").text(tamagotchi.sick ? "Yes" : "No");
+}
 
 export function update(tamagotchi) {
 
@@ -31,7 +48,8 @@ export function update(tamagotchi) {
     $("#results").slideDown();
   }
 
-  var image = images[`blue${tamagotchi.lifeStage.toString() + tamagotchi.sick.toString()}.png`];
+  let tamaColor = tamagotchi.color;
+  let image = images[`${tamaColor + tamagotchi.lifeStage.toString() + tamagotchi.sick.toString()}.png`];
 
   $(".tama-image").html(`<img src = '${image}'>`);
   if (isPoop === true) {
@@ -100,12 +118,4 @@ export function update(tamagotchi) {
   $("#health-bar").removeClass();
   $("#health-bar").addClass(`progress - bar ${healthColor} `);
   $("#health-bar").css("width", `${healthAmount}% `);
-
-  // if (isPoop === true) {
-  //   $("#poop-image").removeClass('hidden');
-  //   $("#poop-button").removeClass('hidden');
-  // } else {
-  //   $("#poop-image").addClass('hidden');
-  //   $("#poop-button").addClass('hidden');
-  // }
 }

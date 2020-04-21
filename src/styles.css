@@ -1,5 +1,20 @@
 .jumbotron {
+ 
+  font-size: 50px;
+  color: white;
+  text-shadow: 3px 3px 3px black;
   text-align: center;
+  background-color: none;
+  background-image: url('./../assets/images/pokebackground.jpg');
+
+}
+
+
+.inside {
+  color: white;
+  filter: none;
+  position: relative;
+  font: bold 42px sans-serif;
 }
 
 .progress {
@@ -18,10 +33,6 @@ label {
 #results {
   text-align: center;
   display: none;
-}
-
-#game-start {
-
 }
 
 .card-body {
@@ -53,6 +64,18 @@ label {
   display: none;
 }
 
+.game-select {
+  text-align: center;
+}
+
+.start-form {
+  text-align: center;
+}
+
+.btn {
+  font-weight: bold;
+  color: white;
+}
 @keyframes imgTransform {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
