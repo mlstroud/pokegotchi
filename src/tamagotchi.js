@@ -20,14 +20,6 @@ export class Tamagotchi {
       this.fullness -= 2;
       this.age += 0.5;
 
-      // if (this.fullness <= 3) {
-      //   this.health -= 2;
-      // } else if (this.fullness >= 8 || !this.sick) {
-      //   this.health += 1;
-      // }
-
-      // if (this.didYouDie())
-
       if (this.tiredness <= 3) {
         this.health = this.health - (1 * this.healthMult);
       }
