@@ -14,61 +14,64 @@
 
   <div class="container">
     <div class="col-sm">
-      <div class="card">
-        <div class="card-header">
+      <div id="results">
+        <div class="well">
+          <p>Congratulations, you let <span id="result-name"></span> die.</p>
+          <p>You managed to keep it alive to the ripe old age of <span id="result-age"></span>.</p>
+        </div>
+      </div>
+      <div class="game-card">
+        <div class="card">
+          <div class="card-header">
 
-          <div id="pet-info">
-            <h2 id='name'></h2>
+            <div id="pet-info">
+              <h2 id='name'></h2>
 
-            <p>Age: <span id='age'></span></p>
-            <p>Sick: <span id='sick'></span></p>
+              <p>Age: <span id='age'></span></p>
+              <p>Sick: <span id='sick'></span></p>
+            </div>
+            <div id="stat-bars">
+              <label for="health-bar">Health</label>
+              <div class="progress">
+                <div class="progress-bar bg-success" id="health-bar" role="progressbar" aria-valuenow="10"
+                  aria-valuemin="0" aria-valuemax="10" style="width:100%">
+                </div>
+              </div>
+              <label for="fullness-bar">Fullness</label>
+              <div class="progress">
+                <div class="progress-bar bg-success" id="fullness-bar" role="progressbar" aria-valuenow="10"
+                  aria-valuemin="0" aria-valuemax="10" style="width:100%">
+                </div>
+              </div>
+
+              <label for="happiness-bar">Happiness</label>
+              <div class="progress">
+                <div class="progress-bar bg-success" id="happiness-bar" role="progressbar" aria-valuenow="10"
+                  aria-valuemin="0" aria-valuemax="10" style="width:100%">
+                </div>
+              </div>
+              <label for="tiredness-bar">Restedness</label>
+              <div class="progress">
+                <div class="progress-bar bg-success" id="tiredness-bar" role="progressbar" aria-valuenow="10"
+                  aria-valuemin="0" aria-valuemax="10" style="width:100%">
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class='card-body'>
+            <div class="tama-image"></div>
+            <img class='poop-image hidden' id="poop-image" src="./../assets/images/poop.png">
           </div>
 
-          <div id="stat-bars">
-            <label for="health-bar">Health</label>
-            <div class="progress" style="width: 50%;">
-              <div class="progress-bar bg-success" id="health-bar" role="progressbar" aria-valuenow="10"
-                aria-valuemin="0" aria-valuemax="10" style="width:100%">
-              </div>
-
-            </div>
-            <label for="fullness-bar">Fullness</label>
-            <div class="progress" style="width: 50%;">
-              <div class="progress-bar bg-success" id="fullness-bar" role="progressbar" aria-valuenow="10"
-                aria-valuemin="0" aria-valuemax="10" style="width:100%">
-              </div>
-            </div>
-
-            <label for="happiness-bar">Happiness</label>
-            <div class="progress" style="width: 50%;">
-
-              <div class="progress-bar bg-success" id="happiness-bar" role="progressbar" aria-valuenow="10"
-                aria-valuemin="0" aria-valuemax="10" style="width:100%">
-
-              </div>
-            </div>
-            <label for="tiredness-bar">Restedness</label>
-            <div class="progress" style="width: 50%;">
-
-              <div class="progress-bar bg-success" id="tiredness-bar" role="progressbar" aria-valuenow="10"
-                aria-valuemin="0" aria-valuemax="10" style="width:100%">
-
-              </div>
-            </div>
+          <div class='card-footer'>
+            <button type="button" id="feed-button">Feed</button>
+            <button type="button" id="play-button">Play</button>
+            <button type="button" id="sleep-button">Sleep</button>
+            <button type="button" id="medicine-button">Give Medicine</button>
+            <button type="button" class="hidden" id="poop-button">Clean Poop</button>
+            <button type="button" id="beat-button">Discipline</button>
           </div>
-
-        </div>
-        <div class='card-body'>
-          <img class='tama-image' src="./../assets/images/babypok.png">
-          <img class='poop-image hidden' id="poop-image" src="./../assets/images/poop.png">
-        </div>
-
-        <div class='card-footer'>
-          <button type="button" id="feed-button">Feed</button>
-          <button type="button" id="play-button">Play</button>
-          <button type="button" id="sleep-button">Sleep</button>
-          <button type="button" id="medicine-button">Give Medicine</button>
-          <button type="button" id="poop-button">Clean Poop</button>
         </div>
       </div>
 

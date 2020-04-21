@@ -1,6 +1,17 @@
 import { Tamagotchi } from './../src/tamagotchi.js';
 import $ from "jquery";
 
+function loadImages(r) {
+  let images = {};
+
+  r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+  return images;
+}
+
+const images = loadImages(require.context('./../assets/images', false, /\.(png|jpe?g|svg)$/));
+
+$(".tama-image").html(`<img src=${images["egg.png"]}>`);
+
 export function update(tamagotchi) {
 
   let isPoop = tamagotchi.poop;
@@ -13,74 +24,90 @@ export function update(tamagotchi) {
   let happinessColor;
   let healthColor;
 
+  if (tamagotchi.didYouDie()) {
+    $("#name").prepend("Dead ");
+    $("#result-name").text(tamagotchi.name);
+    $("#result-age").text(tamagotchi.age);
+    $("#results").slideDown();
+  }
+
+  console.log(tamagotchi.sick.toString());
+  console.log(tamagotchi.lifeCycle);
+  var image = images[`green${tamagotchi.lifeStage.toString() + tamagotchi.sick.toString()}.png`];
+
+  $(".tama-image").html(`<img src = '${image}'>`);
+  if (isPoop === true) {
+    $("#poop-image").removeClass('hidden');
+    $("#poop-button").removeClass('hidden');
+  } else {
+    $("#poop-image").addClass('hidden');
+    $("#poop-button").addClass('hidden');
+  }
+
+
+  if (tamagotchi.sick && !tamagotchi.medsOffered) {
+    $("#medicine-button").prop("disabled", false);
+    setTimeout(() => {
+      $("#medicine-button").prop("disabled", true);
+    }, 10000);
+  }
+
   $("#age").text(tamagotchi.age);
   $("#sick").text(tamagotchi.sick ? "Yes" : "No");
 
-  if (fullnessAmount <= 3) {
+  if (fullnessAmount <= 30) {
     fullnessColor = "bg-danger";
-  } else if (fullnessAmount <= 6) {
+  } else if (fullnessAmount <= 60) {
     fullnessColor = "bg-warning";
   } else {
     fullnessColor = "bg-success";
   }
 
   $("#fullness-bar").removeClass();
-  $("#fullness-bar").addClass(`progress-bar ${fullnessColor}`);
-  $("#fullness-bar").css("width", `${fullnessAmount}%`);
+  $("#fullness-bar").addClass(`progress - bar ${fullnessColor} `);
+  $("#fullness-bar").css("width", `${fullnessAmount}% `);
 
-  if (tirednessAmount <= 3) {
+  if (tirednessAmount <= 30) {
     tirednessColor = "bg-danger";
-  } else if (tirednessAmount <= 6) {
+  } else if (tirednessAmount <= 60) {
     tirednessColor = "bg-warning";
   } else {
     tirednessColor = "bg-success";
   }
 
   $("#tiredness-bar").removeClass();
-  $("#tiredness-bar").addClass(`progress-bar ${tirednessColor}`);
-  $("#tiredness-bar").css("width", `${tirednessAmount}%`);
+  $("#tiredness-bar").addClass(`progress - bar ${tirednessColor} `);
+  $("#tiredness-bar").css("width", `${tirednessAmount}% `);
 
-  if (happinessAmount <= 3) {
+  if (happinessAmount <= 30) {
     happinessColor = "bg-danger";
-  } else if (happinessAmount <= 6) {
+  } else if (happinessAmount <= 60) {
     happinessColor = "bg-warning";
   } else {
     happinessColor = "bg-success";
   }
 
   $("#happiness-bar").removeClass();
-  $("#happiness-bar").addClass(`progress-bar ${happinessColor}`);
-  $("#happiness-bar").css("width", `${happinessAmount}%`);
+  $("#happiness-bar").addClass(`progress - bar ${happinessColor} `);
+  $("#happiness-bar").css("width", `${happinessAmount}% `);
 
-  if (healthAmount <= 3) {
+  if (healthAmount <= 30) {
     healthColor = "bg-danger";
-  } else if (healthAmount <= 6) {
+  } else if (healthAmount <= 60) {
     healthColor = "bg-warning";
   } else {
     healthColor = "bg-success";
   }
 
   $("#health-bar").removeClass();
-  $("#health-bar").addClass(`progress-bar ${healthColor}`);
-  $("#health-bar").css("width", `${healthAmount}%`);
+  $("#health-bar").addClass(`progress - bar ${healthColor} `);
+  $("#health-bar").css("width", `${healthAmount}% `);
 
-  if (isPoop === true) {
-    $("#poop-image").removeClass('hidden');
-  } else {
-    $("#poop-image").addClass('hidden');
-  }
-
-  // var amnt = tamagotchi.fullness * 10;
-  // let color = "";
-
-  // if (amnt <= 3) {
-  //   color = "bg-danger";
-  // } else if (amnt <= 6) {
-  //   color = "bg-warning";
+  // if (isPoop === true) {
+  //   $("#poop-image").removeClass('hidden');
+  //   $("#poop-button").removeClass('hidden');
   // } else {
-  //   color = "bg-success";
+  //   $("#poop-image").addClass('hidden');
+  //   $("#poop-button").addClass('hidden');
   // }
-  // $("#fullness-bar").removeClass();
-  // $("#fullness-bar").addClass(`progress-bar ${color}`);
-  // $("#fullness-bar").css("width", `${amnt}%`);
 }

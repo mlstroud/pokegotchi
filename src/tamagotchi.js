@@ -18,23 +18,29 @@ export class Tamagotchi {
 
   setLife() {
     let gameTick = setInterval(() => {
-      this.tiredness--;
-      this.happiness -= .5;
-      this.fullness -= 2;
-      this.age += 0.5;
 
-      if (this.didYouDie()) {
-        clearInterval(gameTick);
+      if (this.tiredness > 0) {
+        this.tiredness--;
       }
+
+      if (this.happiness > 0) {
+        this.happiness -= 1;
+      }
+
+      if (this.fullness > 1) {
+        this.fullness -= 2;
+      }
+
+      this.age += 0.5;
 
       if (this.tiredness <= 3) {
         this.health = this.health - (1 * this.healthMult);
-        update(this);
+
       }
 
       if (this.happiness <= 3) {
         this.health = this.health - (1 * this.healthMult);
-        update(this);
+
       }
 
       if (this.health <= 4 && this.lifeStage < 3) {
@@ -53,22 +59,34 @@ export class Tamagotchi {
         this.poopFunction();
       }
 
-      if (this.age % 2.5 === 0) {
+      if (this.age % 5 === 0) {
         this.evolve();
       }
 
       if (this.fullness <= 3) {
         this.health = this.health - (2 * this.healthMult);
-        update(this);
       } else if (this.fullness >= 8 && !this.sick) {
         if (this.health < 10) {
           this.health += 1;
-          update(this);
+
         }
+      }
+
+      if (this.didYouDie()) {
+        clearInterval(gameTick);
       }
       update(this);
 
     }, 5000);
+  }
+
+  beat() {
+    this.health -= 2;
+    this.sick = true;
+    this.fullness -= 2;
+    this.happiness -= 2;
+    this.tiredness -= 2;
+    update(this);
   }
 
   evolve() {
@@ -92,7 +110,7 @@ export class Tamagotchi {
         this.sick = true;
         this.healthMult = 1.5;
       }
-    }, 30000);
+    }, 5000);
   }
 
   cleanPoop() {
@@ -136,7 +154,9 @@ export class Tamagotchi {
   }
 
   medicine() {
-    this.health = 5;
+    if (this.health < 5) {
+      this.health = 5;
+    }
     this.sick = false;
     this.healthMult = 1;
     update(this);
