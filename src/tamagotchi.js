@@ -11,6 +11,7 @@ export class Tamagotchi {
     this.medsOffered = false;
     this.poop = false;
     this.healthMult = 1;
+    this.lifeStage = 0;
   }
 
   setLife() {
@@ -28,9 +29,12 @@ export class Tamagotchi {
         this.health = this.health - (1 * this.healthMult);
       }
 
-      if (this.health <= 4) {
+      if (this.health <= 4 && this.lifeStage < 3) {
         this.sick = true;
         this.healthMult = 1.5;
+      } else if (this.health <= 6 && this.lifeStage === 3) {
+        this.sick = true;
+        this.healthMult = 1.5
       }
 
       if (this.sick === true && this.medsOffered === false) {
@@ -39,6 +43,10 @@ export class Tamagotchi {
 
       if (this.age % 1.5 === 0) {
         this.poopFunction();
+      }
+
+      if (this.age % 2.5 === 0) {
+        this.evolve();
       }
 
       if (this.fullness <= 3) {
@@ -51,6 +59,12 @@ export class Tamagotchi {
 
 
     }, 30000);
+  }
+
+  evolve() {
+    if (this.lifeStage < 3) {
+      this.lifeStage++;
+    }
   }
 
   didYouDie() {

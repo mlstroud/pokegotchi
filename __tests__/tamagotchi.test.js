@@ -188,23 +188,40 @@ describe('Tamagatchi', () => {
     thisTamagotchi.sick = true;
     thisTamagotchi.fullness = 5;
     thisTamagotchi.feed();
-    thisTamagotchi.fullness = 7;
+    expect(thisTamagotchi.fullness).toEqual(7);
   });
 
   test('tests if the play function is impaired by sickness', () => {
     thisTamagotchi.sick = true;
     thisTamagotchi.happiness = 5;
     thisTamagotchi.play();
-    thisTamagotchi.happiness = 7;
+    expect(thisTamagotchi.happiness).toEqual(7);
   });
 
   test('tests if the sleep function is impaired by sickness', () => {
     thisTamagotchi.sick = true;
     thisTamagotchi.tiredness = 5;
     thisTamagotchi.tuckIn();
-    thisTamagotchi.tiredness = 7;
+    expect(thisTamagotchi.tiredness).toEqual(7);
   });
 
-  // evolve after x amount of time.
+  test('tests if the tamagatchis life stage increases every 150001 milliseconds', () => {
+    jest.advanceTimersByTime(150001);
+    expect(thisTamagotchi.lifeStage).toEqual(1);
+    jest.advanceTimersByTime(150001);
+    expect(thisTamagotchi.lifeStage).toEqual(2);
+    jest.advanceTimersByTime(150001);
+    expect(thisTamagotchi.lifeStage).toEqual(3);
+    jest.advanceTimersByTime(150001);
+    expect(thisTamagotchi.lifeStage).toEqual(3);
+
+  });
+
+  test('tests if the tamagatchi gets sick at 6 health level if they have a life stage of 3', () => {
+    thisTamagotchi.lifeStage = 3;
+    thisTamagotchi.health = 6;
+    jest.advanceTimersByTime(30001);
+    expect(thisTamagotchi.sick).toEqual(true);
+  })
 
 });
