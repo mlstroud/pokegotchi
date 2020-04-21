@@ -1,0 +1,16 @@
+.jumbotron {
+  text-align: center;
+}
+
+.progress {
+  padding-bottom: 3px;
+}
+
+#pet-info {
+  float: right;
+}
+
+.card-body {
+  height: 300px;
+  border: solid 3px black;
+}

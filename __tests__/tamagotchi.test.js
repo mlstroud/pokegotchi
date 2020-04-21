@@ -222,6 +222,8 @@ describe('Tamagatchi', () => {
     thisTamagotchi.health = 6;
     jest.advanceTimersByTime(30001);
     expect(thisTamagotchi.sick).toEqual(true);
-  })
+  });
+
+
 
 });
