@@ -1,3 +1,5 @@
+import { update } from './../src/userinterface.js';
+
 export class Tamagotchi {
   constructor(name) {
     this.name = name;
@@ -15,18 +17,24 @@ export class Tamagotchi {
   }
 
   setLife() {
-    setInterval(() => {
+    let gameTick = setInterval(() => {
       this.tiredness--;
       this.happiness -= .5;
       this.fullness -= 2;
       this.age += 0.5;
 
+      if (this.didYouDie()) {
+        clearInterval(gameTick);
+      }
+
       if (this.tiredness <= 3) {
         this.health = this.health - (1 * this.healthMult);
+        update(this);
       }
 
       if (this.happiness <= 3) {
         this.health = this.health - (1 * this.healthMult);
+        update(this);
       }
 
       if (this.health <= 4 && this.lifeStage < 3) {
@@ -51,14 +59,16 @@ export class Tamagotchi {
 
       if (this.fullness <= 3) {
         this.health = this.health - (2 * this.healthMult);
+        update(this);
       } else if (this.fullness >= 8 && !this.sick) {
         if (this.health < 10) {
           this.health += 1;
+          update(this);
         }
       }
+      update(this);
 
-
-    }, 30000);
+    }, 5000);
   }
 
   evolve() {
@@ -87,6 +97,7 @@ export class Tamagotchi {
 
   cleanPoop() {
     this.poop = false;
+    update(this);
   }
 
   allowMedicine() {
@@ -103,7 +114,7 @@ export class Tamagotchi {
     } else {
       this.fullness = 10;
     }
-
+    update(this);
   }
 
   play() {
@@ -112,7 +123,7 @@ export class Tamagotchi {
     } else {
       this.happiness = 10;
     }
-
+    update(this);
   }
 
   tuckIn() {
@@ -121,11 +132,13 @@ export class Tamagotchi {
     } else {
       this.tiredness = 10;
     }
+    update(this);
   }
 
   medicine() {
     this.health = 5;
     this.sick = false;
     this.healthMult = 1;
+    update(this);
   }
 }
