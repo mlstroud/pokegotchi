@@ -31,9 +31,7 @@ export function update(tamagotchi) {
     $("#results").slideDown();
   }
 
-  console.log(tamagotchi.sick.toString());
-  console.log(tamagotchi.lifeCycle);
-  var image = images[`green${tamagotchi.lifeStage.toString() + tamagotchi.sick.toString()}.png`];
+  var image = images[`blue${tamagotchi.lifeStage.toString() + tamagotchi.sick.toString()}.png`];
 
   $(".tama-image").html(`<img src = '${image}'>`);
   if (isPoop === true) {

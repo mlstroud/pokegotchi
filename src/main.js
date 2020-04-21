@@ -8,6 +8,8 @@ $(document).ready(function () {
 
   $("#medicine-button").prop("disabled", true);
 
+  $("#")
+
   let tamagotchi = new Tamagotchi("Jeff");
   $("#name").text(tamagotchi.name);
   $("#age").text(tamagotchi.age);

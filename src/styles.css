@@ -16,7 +16,12 @@ label {
 }
 
 #results {
+  text-align: center;
   display: none;
+}
+
+#game-start {
+
 }
 
 .card-body {
@@ -34,10 +39,28 @@ label {
   height: 200px;
   width: 150px;
   margin: auto;
+  animation: imgTransform 1000ms ease-in-out infinite;
 }
 
 .poop-image {
   height: 20px;
   width: 20px;
   float: inherit;
+  animation: poopTransform 1000ms ease-in-out infinite;
+}
+
+#game-start {
+  display: none;
+}
+
+@keyframes imgTransform {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes poopTransform {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1); }
 }
